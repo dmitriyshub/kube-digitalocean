@@ -1,7 +1,7 @@
 
 stages:
   - terraform-plan
-  - terraform-destroy
+  
 
 terraform-plan:
   stage: terraform-plan
@@ -9,13 +9,5 @@ terraform-plan:
   script:
     - cd terraform
     - terraform init -backend-config="access_key=${ACCESS_KEY}" -backend-config="secret_key=${SECRET_KEY}"
-    - terraform apply -var do_token="${DO_TOKEN}" -auto-approve
+    - terraform plan -var do_token="${DO_TOKEN}" -auto-approve
 
-terraform-destroy:
-  stage: terraform-destroy
-  image: ukhydrographicoffice/terraform:1.0.1
-  script:
-    - cd terraform
-    - terraform init -backend-config="access_key=${ACCESS_KEY}" -backend-config="secret_key=${SECRET_KEY}"
-    - terraform destroy -var do_token="${DO_TOKEN}" -auto-approve
-  when: manual
