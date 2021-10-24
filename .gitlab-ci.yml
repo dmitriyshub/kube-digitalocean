@@ -8,5 +8,5 @@ terraform-plan:
   image: ukhydrographicoffice/terraform:1.0.1
   script:
     - terraform init -backend-config="access_key=${ACCESS_KEY}" -backend-config="secret_key=${SECRET_KEY}"
-    - terraform plan -var do_token="${DO_TOKEN}" -auto-approve
+    - terraform plan -var do_token="${DO_TOKEN}"
 
