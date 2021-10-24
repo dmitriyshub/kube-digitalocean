@@ -35,7 +35,7 @@ resource "digitalocean_kubernetes_cluster" "kube-test" {
   version = "1.21.3-do.0"
 
   node_pool {
-    name       = "worker-pool"
+    name       = "pool-test"
     size       = "s-2vcpu-2gb"
     node_count = 3
 
