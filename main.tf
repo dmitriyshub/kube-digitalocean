@@ -27,10 +27,18 @@ provider "digitalocean" {
   token = var.do_token
 }
 
+resource "digitalocean_vpc" "vpc" {
+  name     = "digitalocean-kube"
+  region   = "nyc3"
+  ip_range = "10.10.10.0/24"
+}
+
+
 # Create a web server
 resource "digitalocean_kubernetes_cluster" "kube-test" {
   name   = "kube-test"
   region = "nyc3"
+  vpc_uuid = digitalocean_vpc.vpc.id
   # Grab the latest version slug from `doctl kubernetes options versions`
   version = "1.21.3-do.0"
 
