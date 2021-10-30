@@ -46,14 +46,9 @@ resource "digitalocean_kubernetes_cluster" "kube-test" {
     name       = "pool-test"
     size       = "s-2vcpu-2gb"
     node_count = 3
-
-    taint {
-      key    = "workloadKind"
-      value  = "database"
-      effect = "NoSchedule"
-    }
   }
 }
+
 output "kubeconfig" {
   value = digitalocean_kubernetes_cluster.kube-test.kube_config.0.raw_config
   sensetive = true
