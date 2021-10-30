@@ -51,5 +51,5 @@ resource "digitalocean_kubernetes_cluster" "kube-test" {
 
 output "kubeconfig" {
   value = digitalocean_kubernetes_cluster.kube-test.kube_config.0.raw_config
-  sensetive = true
+  sensitive = true
 }
